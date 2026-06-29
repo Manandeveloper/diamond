@@ -20,11 +20,7 @@ export default function App() {
     ior,
     bounces,
     aberrationStrength,
-    fresnel,
-    fastChroma,
-    envMap,
-    ringColor,
-    autoRotate,
+    environmentIntensity,
   } = useControls({
     '💎 Diamond Settings': folder({
       ior: {
@@ -48,37 +44,22 @@ export default function App() {
         step: 0.001,
         label: 'Dispersion (Rainbow)',
       },
-      fresnel: {
+    }),
+    '✨ Scene Settings': folder({
+      environmentIntensity: {
         value: 1.0,
         min: 0.0,
-        max: 1.0,
+        max: 5.0,
         step: 0.05,
-        label: 'Fresnel Bias',
-      },
-      fastChroma: {
-        value: true,
-        label: 'Fast Chroma Mode',
-      },
-    }),
-    '🎬 Scene Settings': folder({
-      envMap: {
-        options: {
-          'Studio Lighting (HDR)': '/hdri/white_home_studio_4k.hdr',
-          'Exterior Sunset (HDR)': '/hdri/venice_sunset_1k.hdr',
-        },
-        value: '/hdri/white_home_studio_4k.hdr',
-        label: 'Environment Map',
-      },
-      ringColor: {
-        value: '#e2b13c', // Warm Yellow Gold
-        label: 'Band Color',
-      },
-      autoRotate: {
-        value: true,
-        label: 'Orbit Auto-Rotate',
+        label: 'Env Intensity',
       },
     }),
   })
+
+  const envMap = '/hdri/brown_photostudio_02_4k.hdr'
+  // const envMap = '/hdri/leadenhall_market_4k.hdr'
+  const ringColor = '#FFFFF4'
+  const autoRotate = false
 
   return (
     <div className="app-container">
@@ -92,18 +73,13 @@ export default function App() {
           ior={ior}
           bounces={bounces}
           aberrationStrength={aberrationStrength}
-          fresnel={fresnel}
-          fastChroma={fastChroma}
           ringColor={ringColor}
           autoRotate={autoRotate}
+          environmentIntensity={environmentIntensity}
         />
       </Suspense>
 
       {/* Decorative premium status badges */}
-      <div className="badge-container">
-        <div className="badge">PBR ACTIVE</div>
-        <div className="badge">120 FPS CAPABLE</div>
-      </div>
     </div>
   )
 }

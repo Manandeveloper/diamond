@@ -9,10 +9,9 @@ interface SceneContentProps {
   ior: number
   bounces: number
   aberrationStrength: number
-  fresnel: number
-  fastChroma: boolean
   ringColor: string
   autoRotate: boolean
+  environmentIntensity: number
 }
 
 // Inner scene content to access R3F context and hooks
@@ -21,10 +20,9 @@ function SceneContent({
   ior,
   bounces,
   aberrationStrength,
-  fresnel,
-  fastChroma,
   ringColor,
   autoRotate,
+  environmentIntensity,
 }: SceneContentProps) {
   // Load environment map dynamically using useEnvironment
   const envMap = useEnvironment({ files: envPath })
@@ -49,7 +47,7 @@ function SceneContent({
       />
 
       {/* R3F Environment mapping */}
-      <Environment map={envMap} />
+      <Environment map={envMap} environmentIntensity={environmentIntensity} />
 
       {/* Centered Diamond Ring */}
       <Suspense fallback={null}>
@@ -59,8 +57,6 @@ function SceneContent({
             ior={ior}
             bounces={bounces}
             aberrationStrength={aberrationStrength}
-            fresnel={fresnel}
-            fastChroma={fastChroma}
             ringColor={ringColor}
           />
         </Center>
