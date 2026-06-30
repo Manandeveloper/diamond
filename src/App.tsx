@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
-import { useControls, folder } from 'leva'
+// import { useControls, folder } from 'leva'
 import Experience from './Experience'
-import UISidebar from './UI_Sidebar'
+// import UISidebar from './UI_Sidebar'
 
 // Premium Loading Fallback screen
 function LoadingScreen() {
@@ -15,7 +15,8 @@ function LoadingScreen() {
 }
 
 export default function App() {
-  // Define Leva controls for high-fidelity diamond and scene properties
+  // Define Leva controls for high-fidelity diamond and scene properties (Commented out)
+  /*
   const {
     ior,
     bounces,
@@ -38,10 +39,10 @@ export default function App() {
         label: 'Reflections (Bounces)',
       },
       aberrationStrength: {
-        value: 0.02,
-        min: 0.0,
-        max: 0.1,
-        step: 0.001,
+        value: 0.0,
+        // min: 0.0,
+        // max: 0.1,
+        // step: 0.001,
         label: 'Dispersion (Rainbow)',
       },
     }),
@@ -55,16 +56,23 @@ export default function App() {
       },
     }),
   })
+  */
 
-  const envMap = '/hdri/brown_photostudio_02_4k.hdr'
-  // const envMap = '/hdri/leadenhall_market_4k.hdr'
+  // Using default values directly
+  const ior = 2.417
+  const bounces = 3
+  const aberrationStrength = 0.0
+  const environmentIntensity = 1.0
+
+  // const envMap = '/hdri/brown_photostudio_02_4k.hdr'
+  const envMap = '/hdri/env_gem_001_b9c4533e70.exr'
   const ringColor = '#FFFFF4'
   const autoRotate = false
 
   return (
     <div className="app-container">
-      {/* Sidebar UI controls */}
-      <UISidebar />
+      {/* Sidebar UI controls (Commented out completely) */}
+      {/* <UISidebar /> */}
 
       {/* R3F 3D Canvas Experience Wrapper with Suspense */}
       <Suspense fallback={<LoadingScreen />}>

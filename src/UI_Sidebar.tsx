@@ -1,4 +1,4 @@
-import { Leva } from 'leva'
+// import { Leva } from 'leva'
 
 export default function UISidebar() {
   return (
@@ -12,8 +12,9 @@ export default function UISidebar() {
 
       <div className="divider"></div>
 
+      {/*
       <div className="leva-panel-wrapper">
-        {/* Render Leva inside our sidebar container with customized styles */}
+        {/* Render Leva inside our sidebar container with customized styles }
         <Leva 
           fill 
           flat 
@@ -40,6 +41,7 @@ export default function UISidebar() {
           }}
         />
       </div>
+      */}
 
       <div className="divider"></div>
 
